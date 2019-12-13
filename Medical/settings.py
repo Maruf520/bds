@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'home',
     'post',
     'blood_bank',
-    'notifications',
     'crispy_forms',
   
     

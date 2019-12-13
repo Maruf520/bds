@@ -3,9 +3,7 @@ from django.core.paginator import Paginator
 from post.forms import BloodPostForm
 from post.models import Blog 
 from dashboard.models import Image,Commttee,Gallery
-from notifications.signals import notify
 from accounts.models import Account
-from django.db.models.signals import post_save
 from django.core.mail import send_mail
 from django.conf import settings
 from django.core.mail import EmailMessage

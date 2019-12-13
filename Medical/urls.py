@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import include,path
 from django.conf import settings
 from django.conf.urls.static import static
-import notifications.urls
+
 
 urlpatterns = [
     path('account/', include('accounts.urls')),
@@ -27,7 +27,7 @@ urlpatterns = [
     path('', include('home.urls')),
     # path('sms/', include('sms.urls')),
     path('blood_bank/', include('blood_bank.urls')),
-    path('inbox/notifications/', include(notifications.urls, namespace='notifications')),
+    
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

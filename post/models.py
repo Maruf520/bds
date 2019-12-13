@@ -2,7 +2,6 @@ from accounts.models import Account
 from django.db import models
 from django.utils import timezone 
 from django.core.validators import MaxValueValidator, MinValueValidator
-from notifications.signals import notify
 from accounts.models import Account
 from django.db.models.signals import post_save
 
@@ -37,12 +36,6 @@ class Comment(models.Model):
     user = models.ForeignKey(Account, on_delete = models.CASCADE)
     blog = models.ForeignKey(Blog, on_delete = models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
-    text = models.TextField(blank=False)
-
-
-def my_handler(sender, instance, created, **kwargs):
-    notify.send(instance.user, recipient = instance.user, description = Comment.text,verb='You have a fucking notification for new Comment')
-
-post_save.connect(my_handler, sender=Comment) 
+    text = models.TextField(blank=False) 
 
 # Create your models here.
