@@ -61,3 +61,8 @@ class Account( AbstractBaseUser ):
         return False
     def has_module_perms(self, perms, obj=None):
 	    return all(self.has_perm(perm, obj) for perm in perms)
+    # def  __init__ ( self , * args , ** kwargs ):
+    #     if  " max_length "  not  in kwargs: kwargs [ " max_length " ] =  100
+    #     if  " validators "  not  in kwargs: kwargs [ " validators " ] = [validators.RegexValidator ( r " [ 0-9a-zA-Z_. \ - ] {2,50} [ @ ] {1} [ 0-9a- zA-Z_./- ] {2,50} [ . ] {1} [ a-zA-Z ] {2,5} " )]
+    #     super (EmailAddressTypeField, self ). __init__ ( * args, ** kwargs)
+
