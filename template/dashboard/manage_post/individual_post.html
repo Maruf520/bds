@@ -1,35 +1,39 @@
 {% extends 'dashboard/base.html' %}
 
 {% block title %}
-
-Report Messages
+Manage Post
     
 {% endblock title %}
 
 {% block 'main_body' %}
 
 <main class="app-content">
-        {% if report %}
-                        
-        {% for blog in report %}
+   
+          {% if post_item %}              
+            {% for post_item1 in post_item %}
         <div class="col-sm-6">
                 <div class="card">
                   <div class="card-body">
+                    <h2 class="card-title">Name : {{post_item1.name}}</h2>
                         
-                         <h5 class="card-title">{{blog.name}}</h5>
+                         <h5 class="card-title">Description : {{post_item1.description}}</h5>
             
-                    <p class="card-text">{{blog.messege}}</p>
+                    <p class="card-text"></p>
 
                   </div>
-                  {% if not blog.managed %}
-                  <a href="{% url 'postmanaged' blog.id %}" type="button" class="btn btn-primary">Managed</a>
-                  {% endif %}
-
+                  
+                  
+                   {% if not post_item1.managed %}
+                  <a href="{% url 'postmanaged' post_item1.id %}" type="button" class="btn btn-primary">Managed
+                    {% endif %}
+                  </a>
                 </div>
               </div>
               {% endfor %}
-                    {% endif %}
-                      <h1>Maruf</h1>
+              {% endif %}
+              
+                    
+                      <!-- <h1>Maruf</h1> -->
                       {% if comments %}
                       {% for comment in comments %}
                       <p class="card-text">{{ comment.text }}</p>

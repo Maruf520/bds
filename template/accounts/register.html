@@ -23,7 +23,7 @@
       <div class="row d-flex justify-content-center">
         <div class="col-md-5 list-group-item mt-5">
           <h4 class="text-center">Register Now</h4>
-          <form method="POST">
+          <form method="POST" novalidate>
             {% csrf_token %}
             {{ form.as_p }}
               <div class="tile-footer">

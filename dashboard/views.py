@@ -15,8 +15,7 @@ from datetime import datetime, timedelta
 
 @login_required(login_url='login')
 def dashboard1(request):
-    if not request.user.is_staff:
-        return render(request, 'home/ErrorPage/permission.html')
+
     total_user = Account.objects.all().count()
     total_post = Blog.objects.all().count()
     context = {
@@ -89,17 +88,16 @@ def delete_post(request,id):
         return redirect('manage_post')
 @login_required(login_url='login')
 def individual_post(request, id):
-    if not request.user.is_staff:
-        return render(request, 'home/ErrorPage/permission.html')
     if request.method == 'GET':
         post_item = Blog.objects.filter(id = id)
         comments = Comment.objects.filter(blog__id = id).all()
+        print(post_item)
 
         context ={
             'post_item' : post_item,
             'comments' : comments
         }
-    return render(request, 'dashboard/manage_post/individual_post.html', context)
+        return render(request, 'dashboard/manage_post/individual_post.html', context)
 
 @login_required(login_url='login')
 def delete_comment(request, id):

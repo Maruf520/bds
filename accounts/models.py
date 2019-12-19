@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager,PermissionsMixin
-
-# Create your models here.\
+from django.core.validators import RegexValidator
+# Create your models here.
 class MyAccountManager( BaseUserManager ):
     def create_user(self, email,username,blood_group, phone,present_add,permanent_add,last_date_of_donation,password=None,is_staff=False,is_superuser=False ):
         # print('soaib')
@@ -32,7 +32,9 @@ class MyAccountManager( BaseUserManager ):
 
 
 class Account( AbstractBaseUser ):
-    email = models.EmailField( max_length=45, unique = True ,null=True)
+    email_validate =RegexValidator(regex=r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", message="Please enter a valid email.")
+
+    email = models.EmailField( max_length=45, unique = True ,null=True, validators=[email_validate])
     username = models.CharField( max_length=45,  unique = True )
     blood_group  = models.CharField( max_length = 5,null=True )
     phone  = models.CharField( max_length=20, unique = True ,null=True)

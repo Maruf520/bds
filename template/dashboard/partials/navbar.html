@@ -10,12 +10,7 @@
         <button class="app-search__button"><i class="fa fa-search"></i></button>
       </form>
       </li>
-      <!--Notification Menu-->
-      {% load notifications_tags %}
-      <li class="dropdown"><a class="app-nav__item" href="/inbox/notifications/" data-toggle="dropdown" aria-label="Show notifications"><i class="fa fa-bell-o fa-lg">{% notifications_unread as unread_count %}
-        {% if unread_count %}
-             <strong>{{ unread_count }}{{verb}}</strong> 
-        {% endif %}</p></i></a>
+  
         <ul class="app-notification dropdown-menu dropdown-menu-right">
           <li class="app-notification__title"></li>
           <div class="app-notification__content">
