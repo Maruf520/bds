@@ -27,8 +27,7 @@ urlpatterns = [
     path('', include('home.urls')),
     # path('sms/', include('sms.urls')),
     path('blood_bank/', include('blood_bank.urls')),
-] 
-# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # handler404 = 'home.views.handle_error'
 # handler500 = 'home.views.handle_error'
