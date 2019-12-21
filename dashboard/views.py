@@ -15,6 +15,8 @@ from datetime import datetime, timedelta
 
 @login_required(login_url='login')
 def dashboard1(request):
+    if not request.user.is_staff:
+        return render(request, 'home/ErrorPage/permission.html')
 
     total_user = Account.objects.all().count()
     total_post = Blog.objects.all().count()
