@@ -29,5 +29,7 @@ urlpatterns = [
     path('blood_bank/', include('blood_bank.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-# handler404 = 'home.views.handle_error'
-# handler500 = 'home.views.handle_error'
+
+if settings.DEBUG == False:
+    handler404 = 'home.views.handle_error'
+    handler500 = 'home.views.handle_error'
